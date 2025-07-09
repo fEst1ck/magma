@@ -1,7 +1,11 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # TODO remove sudo for user "magma" to avoid unwanted priv escalation from
 # other attack vectors.
+
+# Set environment variables for non-interactive package installation
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
 
 RUN apt-get update && apt-get install -y sudo
 

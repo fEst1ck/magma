@@ -127,6 +127,8 @@ def generate_monitor_df(dumpdir, campaign):
         )
 
     df = pd.DataFrame(rows)
+    if df.empty:
+        return df
     df.set_index('TIME', inplace=True)
     df.fillna(0, inplace=True)
     df = df.astype(int)
