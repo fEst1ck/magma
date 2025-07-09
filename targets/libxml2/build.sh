@@ -20,8 +20,8 @@ cd "$TARGET/repo"
 	--with-lzma=yes \
 	--with-threads=no \
 	--disable-shared
-make -j$(nproc) clean
-make -j$(nproc) all
+make clean
+make all
 
 cp xmllint "$OUT/"
 

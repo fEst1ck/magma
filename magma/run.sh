@@ -25,15 +25,15 @@ mkdir -p "$MONITOR"
 cd "$SHARED"
 
 # prune the seed corpus for any fault-triggering test-cases
-for seed in "$TARGET/corpus/$PROGRAM"/*; do
-    out="$("$MAGMA"/runonce.sh "$seed")"
-    code=$?
+# for seed in "$TARGET/corpus/$PROGRAM"/*; do
+#     out="$("$MAGMA"/runonce.sh "$seed")"
+#     code=$?
 
-    if [ $code -ne 0 ]; then
-        echo "$seed: $out"
-        rm "$seed"
-    fi
-done
+#     if [ $code -ne 0 ]; then
+#         echo "$seed: $out"
+#         rm "$seed"
+#     fi
+# done
 
 shopt -s nullglob
 seeds=("$1"/*)

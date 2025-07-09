@@ -21,8 +21,8 @@ mkdir -p "$WORK/lib" "$WORK/include"
 cd "$TARGET/repo"
 ./autogen.sh
 ./configure --disable-shared --prefix="$WORK"
-make -j$(nproc) clean
-make -j$(nproc)
+make clean
+make
 make install
 
 cp "$WORK/bin/tiffcp" "$OUT/"
