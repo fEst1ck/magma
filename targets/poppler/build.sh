@@ -21,8 +21,8 @@ mkdir -p "$WORK/lib" "$WORK/include"
 pushd "$TARGET/freetype2"
 ./autogen.sh
 ./configure --prefix="$WORK" --disable-shared PKG_CONFIG_PATH="$WORK/lib/pkgconfig"
-make -j$(nproc) clean
-make -j$(nproc)
+make clean
+make
 make install
 
 mkdir -p "$WORK/poppler"
@@ -58,7 +58,7 @@ cmake "$TARGET/repo" \
   -DFREETYPE_LIBRARY="$WORK/lib/libfreetype.a" \
   -DICONV_LIBRARIES="/usr/lib/x86_64-linux-gnu/libc.so" \
   -DCMAKE_EXE_LINKER_FLAGS_INIT="$LIBS"
-make -j$(nproc) poppler poppler-cpp pdfimages pdftoppm
+make poppler poppler-cpp pdfimages pdftoppm
 EXTRA=""
 
 cp "$WORK/poppler/utils/"{pdfimages,pdftoppm} "$OUT/"

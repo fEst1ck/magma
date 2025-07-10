@@ -45,10 +45,10 @@ make -j$(nproc) clean
 pushd oniguruma
 autoreconf -vfi
 ./configure --disable-shared
-make -j$(nproc)
+make
 popd
 
-make -j$(nproc)
+make
 
 # Generate seed corpora
 sapi/cli/php sapi/fuzzer/generate_unserialize_dict.php
