@@ -9,7 +9,8 @@ apt-get update && \
     cargo \
     git \
     curl \
-    lsb-release software-properties-common gnupg
+    lsb-release software-properties-common gnupg \
+    vim
 
 rm -rf /usr/local/bin/clang /usr/local/bin/clang++ /usr/local/bin/llvm*
 rm -rf /usr/local/lib/clang

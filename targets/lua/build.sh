@@ -15,11 +15,11 @@ fi
 
 # build lua library
 cd "$TARGET/repo"
-make -j$(nproc) clean
-make -j$(nproc) liblua.a
+make clean
+make liblua.a
 
 cp liblua.a "$OUT/"
 
 # build driver
-make -j$(nproc) lua
+make lua
 cp lua "$OUT/"

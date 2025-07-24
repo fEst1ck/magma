@@ -30,9 +30,9 @@ REPEAT=1
 # [TIMEOUT]: time to run each campaign. This variable supports one-letter
 # suffixes to indicate duration (s: seconds, m: minutes, h: hours, d: days)
 # (default: 1m)
-TIMEOUT=1m
+TIMEOUT=5m
 
-# [POLL]: time (in seconds) between polls (default: 5)
+# [POLL]: time (in seconds) between polls (default: 5)S
 POLL=5
 
 # [CACHE_ON_DISK]: if set, the cache workdir is mounted on disk instead of
@@ -79,15 +79,19 @@ FUZZERS=(dummy_fuzzer_path)
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
 # afl_TARGETS=(libxml2)
-# dummy_fuzzer_block_TARGETS=(php)
-# dummy_fuzzer_edge_TARGETS=(php)
-dummy_fuzzer_path_TARGETS=(php)
-# dummy_fuzzer_pfp_TARGETS=(php)
+dummy_fuzzer_block_TARGETS=(libpng)
+dummy_fuzzer_edge_TARGETS=(libpng)
+dummy_fuzzer_path_TARGETS=(poppler)
+dummy_fuzzer_pfp_TARGETS=(libpng)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the
 # `target`
 # afl_libtiff_PROGRAMS=(tiffcp)
+# dummy_fuzzer_block_PROGRAMS=(x509 asn1 client server bignum)
+# dummy_fuzzer_edge_PROGRAMS=(x509 asn1 client server bignum)
+# dummy_fuzzer_path_PROGRAMS=(x509 asn1 client server bignum)
+# dummy_fuzzer_pfp_PROGRAMS=(x509 asn1 client server bignum)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`

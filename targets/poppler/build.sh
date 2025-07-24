@@ -35,6 +35,7 @@ test -n "$RANLIB" && EXTRA="$EXTRA -DCMAKE_RANLIB=$RANLIB"
 
 cmake "$TARGET/repo" \
   $EXTRA \
+  -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -L${OUT} ${OUT}/magma.o" \
   -DCMAKE_BUILD_TYPE=debug \
   -DBUILD_SHARED_LIBS=OFF \
   -DFONT_CONFIGURATION=generic \
@@ -56,10 +57,15 @@ cmake "$TARGET/repo" \
   -DWITH_NSS3=OFF \
   -DFREETYPE_INCLUDE_DIRS="$WORK/include/freetype2" \
   -DFREETYPE_LIBRARY="$WORK/lib/libfreetype.a" \
-  -DICONV_LIBRARIES="/usr/lib/x86_64-linux-gnu/libc.so" \
-  -DCMAKE_EXE_LINKER_FLAGS_INIT="$LIBS"
-make poppler poppler-cpp pdfimages pdftoppm
+  -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -L${OUT}"
+  # -DCMAKE_EXE_LINKER_FLAGS_INIT="$LDFLAGS $LIBS"
+  # -DICONV_LIBRARIES="/usr/lib/x86_64-linux-gnu/libc.so" \
+  # -DCMAKE_EXE_LINKER_FLAGS="$LIBS"
+make VERBOSE=1 poppler poppler-cpp pdfimages pdftoppm
 EXTRA=""
+
+echo "Link command: $CXX $CXXFLAGS ... $LDFLAGS $LIBS"
+
 
 cp "$WORK/poppler/utils/"{pdfimages,pdftoppm} "$OUT/"
 $CXX $CXXFLAGS -std=c++11 -I"$WORK/poppler/cpp" -I"$TARGET/repo/cpp" \

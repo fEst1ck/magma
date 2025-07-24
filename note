@@ -7,3 +7,9 @@ sudo umount -l workdir/cache
 sudo chown -R $USER:$USER workdir
 
 ~/magma/tools/benchd/exp2json.py workdir bugs.json
+
+poppler: cannot compile
+php: no corpus
+libsndfile: only one seed always?
+lua: fuzzer stack overflow
+openssl: asn1parse: terminate early
