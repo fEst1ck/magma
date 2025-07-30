@@ -30,7 +30,7 @@ REPEAT=1
 # [TIMEOUT]: time to run each campaign. This variable supports one-letter
 # suffixes to indicate duration (s: seconds, m: minutes, h: hours, d: days)
 # (default: 1m)
-TIMEOUT=5m
+TIMEOUT=10m
 
 # [POLL]: time (in seconds) between polls (default: 5)S
 POLL=5
@@ -72,17 +72,17 @@ NO_ARCHIVE=1
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
 # FUZZERS=(afl aflfast moptafl aflplusplus fairfuzz honggfuzz)
-FUZZERS=(dummy_fuzzer_block dummy_fuzzer_edge dummy_fuzzer_path dummy_fuzzer_pfp)
-# FUZZERS=(dummy_fuzzer_path)
+# FUZZERS=(dummy_fuzzer_block dummy_fuzzer_edge dummy_fuzzer_path dummy_fuzzer_pfp)
+FUZZERS=(dummy_fuzzer_path)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
 # afl_TARGETS=(libxml2)
-dummy_fuzzer_block_TARGETS=(poppler)
-dummy_fuzzer_edge_TARGETS=(poppler)
-dummy_fuzzer_path_TARGETS=(poppler)
-dummy_fuzzer_pfp_TARGETS=(poppler)
+dummy_fuzzer_block_TARGETS=(php)
+dummy_fuzzer_edge_TARGETS=(php)
+dummy_fuzzer_path_TARGETS=(php)
+dummy_fuzzer_pfp_TARGETS=(php)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the

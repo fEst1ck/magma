@@ -17,4 +17,4 @@ export CFG_FILE="$FUZZER/coverage/coverage.json"
 
 "$FUZZER/dummy-fuzzer" -i "$TARGET/corpus/$PROGRAM" -o "$SHARED/findings" \
 	-j 0 -c block,edge,path,pfp,rawpath -u block \
-    $FUZZARGS -- "$OUT/$PROGRAM" $ARGS 2>&1
+    $FUZZARGS -- "$OUT/$PROGRAM" @@ $ARGS 2>&1
