@@ -72,26 +72,27 @@ NO_ARCHIVE=1
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
 # FUZZERS=(afl aflfast moptafl aflplusplus fairfuzz honggfuzz)
-FUZZERS=(dummy_fuzzer_block dummy_fuzzer_edge dummy_fuzzer_path dummy_fuzzer_pfp)
+FUZZERS=(dummy_fuzzer_block dummy_fuzzer_edge dummy_fuzzer_pfp dummy_fuzzer_quad dummy_fuzzer_path)
 # FUZZERS=(dummy_fuzzer_block)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
 # afl_TARGETS=(libxml2)
-dummy_fuzzer_block_TARGETS=(libpng)
-dummy_fuzzer_edge_TARGETS=(libpng)
-dummy_fuzzer_path_TARGETS=(libpng)
-dummy_fuzzer_pfp_TARGETS=(libpng)
+dummy_fuzzer_block_TARGETS=(php)
+dummy_fuzzer_edge_TARGETS=(php)
+dummy_fuzzer_path_TARGETS=(php)
+dummy_fuzzer_pfp_TARGETS=(php)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the
 # `target`
 # afl_libtiff_PROGRAMS=(tiffcp)
-# dummy_fuzzer_block_PROGRAMS=(x509 asn1 client server bignum)
-# dummy_fuzzer_edge_PROGRAMS=(x509 asn1 client server bignum)
-# dummy_fuzzer_path_PROGRAMS=(x509 asn1 client server bignum)
-# dummy_fuzzer_pfp_PROGRAMS=(x509 asn1 client server bignum)
+dummy_fuzzer_block_php_PROGRAMS=(exif)
+dummy_fuzzer_edge_php_PROGRAMS=(exif)
+dummy_fuzzer_quad_php_PROGRAMS=(exif)
+dummy_fuzzer_pfp_php_PROGRAMS=(exif)
+dummy_fuzzer_path_php_PROGRAMS=(exif)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`

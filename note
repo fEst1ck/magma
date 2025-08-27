@@ -4,16 +4,19 @@ FUZZER=dummy_fuzzer_path TARGET=libpng  PROGRAM=libpng_read_fuzzer ENTRYPOINT=/b
 
 FUZZER=pure TARGET=libpng  PROGRAM=libpng_read_fuzzer ENTRYPOINT=/bin/bash ./start.sh
 
+FUZZER=dummy_fuzzer_block TARGET=php  PROGRAM=exif ENTRYPOINT=/bin/bash ./start.sh
+
+
 sudo umount -l workdir/cache
 
 sudo chown -R $USER:$USER workdir
 
 ~/magma/tools/benchd/exp2json.py workdir bugs.json
 
+poppler: cannot compile
+php: no corpus
+libsndfile: only one seed always?
 lua: fuzzer stack overflow
 openssl: asn1parse: terminate early
 
-solved:
-php: no corpus
-libsndfile: only one seed always?
-poppler: cannot compile
+for d in fuzzers/dummy_fuzzer_*; do cp fuzzers/dummy_fuzzer_block/fetch.sh "$d"/fetch.sh; done

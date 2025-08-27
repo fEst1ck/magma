@@ -10,7 +10,7 @@ git clone --no-checkout https://github.com/fEst1ck/path-cov.git "$FUZZER/path-co
 git -C "$FUZZER/path-cov" checkout 9d8fc8c73d86e63bbec64cdb3cef5608719a88a8
 
 git clone --no-checkout https://github.com/fEst1ck/path-cov-instr.git "$FUZZER/path-cov-instr"
-git -C "$FUZZER/path-cov-instr" checkout f35332c0b569c39168a2b2c7f0c098ad54f3fc89
+git -C "$FUZZER/path-cov-instr" checkout 2e94edf3b7b9f811b6eae08f4b4b94a36ee0a48c
 
 git clone --no-checkout https://github.com/fEst1ck/coverage-playground.git "$FUZZER/repo"
 git -C "$FUZZER/repo" checkout a857280e36a9a1a4f05e40623fd8c3f2f9e08094
