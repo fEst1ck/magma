@@ -10,10 +10,10 @@ git clone --no-checkout https://github.com/fEst1ck/path-cov.git "$FUZZER/path-co
 git -C "$FUZZER/path-cov" checkout 9d8fc8c73d86e63bbec64cdb3cef5608719a88a8
 
 git clone --no-checkout https://github.com/fEst1ck/path-cov-instr.git "$FUZZER/path-cov-instr"
-git -C "$FUZZER/path-cov-instr" checkout d1d446acda5aaec78e58a2a8e077745cface19b2
+git -C "$FUZZER/path-cov-instr" checkout f35332c0b569c39168a2b2c7f0c098ad54f3fc89
 
 git clone --no-checkout https://github.com/fEst1ck/coverage-playground.git "$FUZZER/repo"
-git -C "$FUZZER/repo" checkout 5455339b1a428369e7313d7a5ec83a137f1cc711
+git -C "$FUZZER/repo" checkout 8a6322ff55a5f55f0b605ca5098b4541018b2a49
 
 git clone https://github.com/fEst1ck/fuzz-target.git "$FUZZER/fuzz-target"
 

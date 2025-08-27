@@ -2,6 +2,8 @@ FUZZER=dummy_fuzzer_path TARGET=libsndfile  PROGRAM=sndfile_fuzzer ENTRYPOINT=/b
 
 FUZZER=dummy_fuzzer_path TARGET=libpng  PROGRAM=libpng_read_fuzzer ENTRYPOINT=/bin/bash ./start.sh
 
+FUZZER=pure TARGET=libpng  PROGRAM=libpng_read_fuzzer ENTRYPOINT=/bin/bash ./start.sh
+
 sudo umount -l workdir/cache
 
 sudo chown -R $USER:$USER workdir

@@ -55,6 +55,7 @@ if [ -t 1 ]; then
     docker run -it $flag_volume \
         --cap-add=SYS_PTRACE --env=PROGRAM="$PROGRAM" --env=ARGS="$ARGS" \
         --env=FUZZARGS="$FUZZARGS" --env=POLL="$POLL" --env=TIMEOUT="$TIMEOUT" \
+	--shm-size=512m \
         $flag_aff $flag_ep "$IMG_NAME"
 else
     container_id=$(
