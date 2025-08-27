@@ -13,7 +13,7 @@ git clone --no-checkout https://github.com/fEst1ck/path-cov-instr.git "$FUZZER/p
 git -C "$FUZZER/path-cov-instr" checkout f35332c0b569c39168a2b2c7f0c098ad54f3fc89
 
 git clone --no-checkout https://github.com/fEst1ck/coverage-playground.git "$FUZZER/repo"
-git -C "$FUZZER/repo" checkout 8a6322ff55a5f55f0b605ca5098b4541018b2a49
+git -C "$FUZZER/repo" checkout 6ec44bafb43c769a128e405e1f28972571032624
 
 git clone https://github.com/fEst1ck/fuzz-target.git "$FUZZER/fuzz-target"
 
