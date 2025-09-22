@@ -9,8 +9,7 @@ apt-get update && \
     cargo \
     git \
     curl \
-    lsb-release software-properties-common gnupg \
-    vim
+    lsb-release software-properties-common gnupg
 
 rm -rf /usr/local/bin/clang /usr/local/bin/clang++ /usr/local/bin/llvm*
 rm -rf /usr/local/lib/clang
@@ -32,11 +31,12 @@ rm llvm.sh
 update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 100 && \
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-19 100
 
+apt remove -y --purge rustc cargo
+apt autoremove -y
+
 # Uninstall old Rust
 if which rustup; then rustup self uninstall -y; fi
 
 # Install latest Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /rustup.sh && \
-    sh /rustup.sh -y
-
-export PATH="/root/.cargo/bin:${PATH}"
+    sh /rustup.sh -y --default-toolchain 1.80

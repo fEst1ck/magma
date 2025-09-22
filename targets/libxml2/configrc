@@ -1,3 +1,4 @@
 PROGRAMS=(libxml2_xml_read_memory_fuzzer xmllint)
 
 xmllint_ARGS="--valid --oldxml10 --push --memory @@"
+libxml2_xml_read_memory_fuzzer_ARGS="@@"

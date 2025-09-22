@@ -16,5 +16,5 @@ mkdir -p "$SHARED/findings"
 export CFG_FILE="$FUZZER/coverage/coverage.json"
 
 "$FUZZER/dummy-fuzzer" -i "$TARGET/corpus/$PROGRAM" -o "$SHARED/findings" \
-	-j 0 -c block,edge,path,pfp,rawpath -u edge,pfp \
-    $FUZZARGS -- "$OUT/$PROGRAM" @@ $ARGS 2>&1
+	-j 0 -c block,edge,pfp,quad,path,rawpath -u edge,pfp \
+    $FUZZARGS -- "$OUT/$PROGRAM" $ARGS 2>&1

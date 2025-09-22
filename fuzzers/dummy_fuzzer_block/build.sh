@@ -6,6 +6,8 @@ set -e
 # - env FUZZER: path to fuzzer work dir
 ##
 
+export PATH="/root/.cargo/bin:${PATH}"
+
 cd "$FUZZER/path-cov-instr"
 make
 cp libCodeCoveragePass.so $FUZZER/libCodeCoveragePass.so

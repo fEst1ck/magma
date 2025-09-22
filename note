@@ -2,6 +2,11 @@ FUZZER=dummy_fuzzer_path TARGET=libsndfile  PROGRAM=sndfile_fuzzer ENTRYPOINT=/b
 
 FUZZER=dummy_fuzzer_path TARGET=libpng  PROGRAM=libpng_read_fuzzer ENTRYPOINT=/bin/bash ./start.sh
 
+FUZZER=dummy_fuzzer_path TARGET=libsndfile  ARGS="@@" PROGRAM=sndfile_fuzzer ENTRYPOINT=/bin/bash ./start.sh
+
+FUZZER=dummy_fuzzer_path TARGET=libtiff  PROGRAM=tiffcp ENTRYPOINT=/bin/bash ./start.sh
+
+
 sudo umount -l workdir/cache
 
 sudo chown -R $USER:$USER workdir
@@ -15,3 +20,17 @@ solved:
 php: no corpus
 libsndfile: only one seed always?
 poppler: cannot compile
+
+libxml2_xml_read_memory_fuzzer: some fuzzers crash
+
+for f in /home/zw/magma/tools/captain/exp-xmllint/ar/dummy_fuzzer_*/libxml2/xmllint/average_report/average_report.html; do open $f; done
+for f in /home/zw/magma/tools/captain/exp-xmllint/ar/dummy_fuzzer_*/*/*; do python3 gen_all_reports.py $f; done
+
+
+2025-09-12
+libsndfile: early stop, only 1 path
+libxml2_xml_read_memory_fuzzer: early stop
+php: ok
+libpng_read_fuzzer: ok
+x509: ok
+xmllint: looks ok?

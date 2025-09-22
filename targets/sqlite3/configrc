@@ -1,1 +1,2 @@
 PROGRAMS=(sqlite3_fuzz)
+sqlite3_fuzz_ARGS="@@"
