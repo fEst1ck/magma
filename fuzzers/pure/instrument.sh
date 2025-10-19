@@ -14,9 +14,9 @@ export CC="clang"
 export CXX="clang++"
 export COVERAGE_DIR="$FUZZER/coverage"
 
-export CFLAGS="$CFLAGS -fsanitize=fuzzer-no-link"
-export CXXFLAGS="$CXXFLAGS -fsanitize=fuzzer-no-link -stdlib=libstdc++"
-export LDFLAGS="$LDFLAGS -fsanitize=fuzzer-no-link -stdlib=libstdc++ -L$OUT"
+export CFLAGS="$CFLAGS"
+export CXXFLAGS="$CXXFLAGS -stdlib=libstdc++"
+export LDFLAGS="$LDFLAGS -stdlib=libstdc++ -L$OUT"
 
 export LIBS="$LIBS $FUZZER/libStandaloneFuzzTarget.a -lstdc++"
 

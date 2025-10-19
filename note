@@ -34,3 +34,122 @@ php: ok
 libpng_read_fuzzer: ok
 x509: ok
 xmllint: looks ok?
+
+2025-09-21
+libpng: quad 4 times slower 1000 -> 250
+after path reduction 700
+libsndfile: 15 times slower 30 -> 2
+exif: 18 -> 7
+
+
+overhead exps
+
+# run 100 times over all seeds, measure time
+out=$( { time bash -c 'for i in {1..100}; do for f in "$TARGET/corpus/$PROGRAM"/*; do "$OUT/$PROGRAM" "$f" >/dev/null 2>&1; done; done'; } 2>&1 ); awk '/user/{u=$2} /sys/{s=$2} END{split(u,a,"m"); split(s,b,"m"); print (a[1]*60+a[2])+(b[1]*60+b[2])}' <<< "$out"
+
+
+FUZZER=dummy_fuzzer_path TARGET=libsndfile  PROGRAM=sndfile_fuzzer ENTRYPOINT=/bin/bash ./build.sh
+# path initially doesn't grow?
+
+FUZZER=dummy_fuzzer_path TARGET=libtiff  PROGRAM=tiff_read_rgba_fuzzer ENTRYPOINT=/bin/bash ./build.sh
+FUZZER=dummy_fuzzer_path TARGET=libtiff  PROGRAM=tiffcp ENTRYPOINT=/bin/bash ./build.sh
+
+read trace len
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <stdint.h>
+
+#define DEFAULT_SHM_FILE "/tmp/coverage_shm_0.bin"
+#define SHM_FILE (getenv("COVERAGE_SHM_FILE") != NULL ? getenv("COVERAGE_SHM_FILE") : DEFAULT_SHM_FILE)
+#define SHM_SIZE_BYTES (512 * 1024 * 1024)
+
+int main() { 
+    int fd = open(SHM_FILE, O_RDONLY);
+    if (fd < 0) {
+        perror("open");
+        return 1;
+    }
+    uint32_t *shm = mmap(NULL, SHM_SIZE_BYTES, PROT_READ, MAP_SHARED, fd, 0);
+    if (shm == MAP_FAILED) {
+        perror("mmap");
+        close(fd);
+        return 1;
+    }
+    close(fd);
+    uint32_t len = shm[0];
+    printf("Collected Trace Length: %u\n", len);
+    munmap(shm, SHM_SIZE_BYTES);
+    return 0;
+}
+```
+
+stat input exec path lens
+```
+#!/usr/bin/env bash
+set -euo pipefail
+
+total=0
+count=0
+
+for f in "$TARGET/corpus/$PROGRAM"/*; do
+  echo "Running $f ..."
+  "$OUT/$PROGRAM" "$f" >/dev/null 2>&1
+
+  # Run a.out and extract the trace length
+  len=$(./a.out | awk '/Collected Trace Length:/ {print $NF}')
+  if [[ -n "$len" ]]; then
+    total=$((total + len))
+    count=$((count + 1))
+  else
+    echo "Warning: no trace length found for $f"
+  fi
+
+  # Remove the shared memory file
+  rm -f /tmp/coverage_shm_0.bin
+done
+
+echo "Inputs run: $count"
+echo "Total Collected Trace Length: $total"
+if [[ $count -gt 0 ]]; then
+  echo "Average Trace Length per Input: $((total / count))"
+fi
+```
+
+time path reduction overhead
+```
+#!/usr/bin/env bash
+set -euo pipefail
+
+fuzzer_total=0
+pfp_total=0
+path_total=0
+
+# Read from file given as argument
+file="${1:-times.txt}"
+
+while read -r key val; do
+  [[ -z "$key" || -z "$val" ]] && continue
+  num=$(echo "$val" | sed -E 's/[^0-9.]//g')
+  if [[ "$val" == *ms ]]; then
+    # convert milliseconds to microseconds
+    us=$(awk -v n="$num" 'BEGIN {printf "%.0f", n * 1000}')
+  else
+    # already in microseconds
+    us=$(awk -v n="$num" 'BEGIN {printf "%.0f", n}')
+  fi
+
+  case "$key" in
+    fuzzer:) fuzzer_total=$((fuzzer_total + us)) ;;
+    pfp:)    pfp_total=$((pfp_total + us)) ;;
+    path:)   path_total=$((path_total + us)) ;;
+  esac
+done < "$file"
+
+echo "Total fuzzer time: ${fuzzer_total}µs"
+echo "Total pfp time:    ${pfp_total}µs"
+echo "Total path time:   ${path_total}µs"
+```

@@ -1,1 +1,2 @@
 PROGRAMS=(libpng_read_fuzzer)
+libpng_read_fuzzer_ARGS="@@"

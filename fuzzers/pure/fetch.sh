@@ -16,3 +16,6 @@ set -e
 # git -C "$FUZZER/repo" checkout 5455339b1a428369e7313d7a5ec83a137f1cc711
 
 git clone https://github.com/fEst1ck/fuzz-target.git "$FUZZER/fuzz-target"
+
+wget -O "$FUZZER/StandaloneFuzzTargetMain.c" https://raw.githubusercontent.com/llvm/llvm-project/main/compiler-rt/lib/fuzzer/standalone/StandaloneFuzzTargetMain.c
+mv "$FUZZER/StandaloneFuzzTargetMain.c" "$FUZZER/fuzz-target/FuzzTarget.c"

@@ -39,4 +39,4 @@ if which rustup; then rustup self uninstall -y; fi
 
 # Install latest Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /rustup.sh && \
-    sh /rustup.sh -y --default-toolchain 1.80
+    sh /rustup.sh -y
