@@ -7,7 +7,7 @@ set -e
 ##
 
 git clone --no-checkout https://github.com/fEst1ck/path-cov.git "$FUZZER/path-cov"
-git -C "$FUZZER/path-cov" checkout 9d8fc8c73d86e63bbec64cdb3cef5608719a88a8
+git -C "$FUZZER/path-cov" checkout 371a333db71915df3078441f6337ba426df897fc
 
 git clone --no-checkout https://github.com/fEst1ck/path-cov-instr.git "$FUZZER/path-cov-instr"
 git -C "$FUZZER/path-cov-instr" checkout d1d446acda5aaec78e58a2a8e077745cface19b2

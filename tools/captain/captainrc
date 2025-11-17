@@ -7,7 +7,7 @@
 ###
 
 # WORKDIR: path to directory where shared volumes will be created
-WORKDIR=./exp-xmllint-11-15
+WORKDIR=./exp-xmllint-11-17
 
 # REPEAT: number of campaigns to run per program (per fuzzer)
 REPEAT=4
