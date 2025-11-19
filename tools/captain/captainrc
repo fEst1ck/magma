@@ -7,7 +7,7 @@
 ###
 
 # WORKDIR: path to directory where shared volumes will be created
-WORKDIR=./exp-sndfile_fuzzer-11-18
+WORKDIR=./exp-libxml2_xml_read_memory_fuzzer-11-18
 
 # REPEAT: number of campaigns to run per program (per fuzzer)
 REPEAT=4
@@ -99,11 +99,11 @@ dummy_fuzzer_edge_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer)
 dummy_fuzzer_quad_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer)
 dummy_fuzzer_pfp_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer)
 dummy_fuzzer_path_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer)
-dummy_fuzzer_block_libxml2_PROGRAMS=(xmllint)
-dummy_fuzzer_edge_libxml2_PROGRAMS=(xmllint)
-dummy_fuzzer_quad_libxml2_PROGRAMS=(xmllint)
-dummy_fuzzer_pfp_libxml2_PROGRAMS=(xmllint)
-dummy_fuzzer_path_libxml2_PROGRAMS=(xmllint)
+dummy_fuzzer_block_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer)
+dummy_fuzzer_edge_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer)
+dummy_fuzzer_quad_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer)
+dummy_fuzzer_pfp_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer)
+dummy_fuzzer_path_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer)
 dummy_fuzzer_block_openssl_PROGRAMS=(server)
 dummy_fuzzer_edge_openssl_PROGRAMS=(server)
 dummy_fuzzer_quad_openssl_PROGRAMS=(server)
