@@ -7,13 +7,13 @@ set -e
 ##
 
 git clone --no-checkout https://github.com/fEst1ck/path-cov.git "$FUZZER/path-cov"
-git -C "$FUZZER/path-cov" checkout 371a333db71915df3078441f6337ba426df897fc
+git -C "$FUZZER/path-cov" checkout 7174216f0be724698602b726cd81888b9b76c29d
 
 git clone --no-checkout https://github.com/fEst1ck/path-cov-instr.git "$FUZZER/path-cov-instr"
 git -C "$FUZZER/path-cov-instr" checkout d1d446acda5aaec78e58a2a8e077745cface19b2
 
 git clone --no-checkout https://github.com/fEst1ck/coverage-playground.git "$FUZZER/repo"
-git -C "$FUZZER/repo" checkout b92a62ab4ef6438faf967b7983ccc4cf8ba57a46
+git -C "$FUZZER/repo" checkout 7174216f0be724698602b726cd81888b9b76c29d
 # for testing overhead
 # git -C "$FUZZER/repo" checkout af42b86c7bb123cc32529f8d2d82db77ba857189
 
