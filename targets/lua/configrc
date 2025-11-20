@@ -1,1 +1,2 @@
 PROGRAMS=(lua)
+lua_ARGS="@@"
