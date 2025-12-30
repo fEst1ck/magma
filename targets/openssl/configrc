@@ -1,3 +1,4 @@
 PROGRAMS=(asn1 asn1parse bignum server client x509)
 x509_ARGS="@@"
 server_ARGS="@@"
+client_ARGS="@@"

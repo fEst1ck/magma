@@ -13,10 +13,8 @@ git clone --no-checkout https://github.com/fEst1ck/path-cov-instr.git "$FUZZER/p
 git -C "$FUZZER/path-cov-instr" checkout d1d446acda5aaec78e58a2a8e077745cface19b2
 
 git clone --no-checkout https://github.com/fEst1ck/coverage-playground.git "$FUZZER/repo"
-# git -C "$FUZZER/repo" checkout 20b68d985807015890e69857c5b8945f9e4f793e
-# for testing overhead
-git -C "$FUZZER/repo" checkout 4cb55ef2a669dda1b26db68bd8aad5a019b222c1
-
+git -C "$FUZZER/repo" checkout 5c3892418a641109629152701597d8e0bb05bb85
+``
 git clone https://github.com/fEst1ck/fuzz-target.git "$FUZZER/fuzz-target"
 
 wget -O "$FUZZER/StandaloneFuzzTargetMain.c" https://raw.githubusercontent.com/llvm/llvm-project/main/compiler-rt/lib/fuzzer/standalone/StandaloneFuzzTargetMain.c
